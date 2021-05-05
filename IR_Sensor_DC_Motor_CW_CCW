@@ -1,0 +1,36 @@
+//const int pwm = 2 ; //initializing pin 2 as pwm
+const int in_1 = 8 ;
+const int in_2 = 9 ;
+const int ProxSensor1=2;
+const int ProxSensor2=3;
+//For providing logic to L298 IC to choose the direction of the DC motor
+
+void setup() {
+   //pinMode(pwm,OUTPUT) ; //we have to set PWM pin as output
+   pinMode(in_1,OUTPUT) ; //Logic pins are also set as output
+   pinMode(in_2,OUTPUT) ;
+   pinMode(ProxSensor1,INPUT);
+   pinMode(ProxSensor2,INPUT);
+}
+
+void loop() {
+   //For Clock wise motion , in_1 = High , in_2 = Low
+   if(digitalRead(ProxSensor1)==LOW)   
+   {
+   digitalWrite(in_1,HIGH) ;
+   digitalWrite(in_2,LOW) ;
+   
+   }
+   if(digitalRead(ProxSensor2)==LOW) 
+   { 
+ //For Anti Clock-wise motion - IN_1 = LOW , IN_2 = HIGH
+   digitalWrite(in_1,LOW) ;
+   digitalWrite(in_2,HIGH) ;
+ 
+   }
+   else
+   {
+   digitalWrite(in_1,HIGH) ;
+   digitalWrite(in_2,HIGH) ;
+    }
+}
