@@ -1,0 +1,20 @@
+#include<Servo.h>
+Servo my_servo;
+int sensor_pin=4;
+int my_servo_pin=5;
+int val=0;
+void setup() {
+ pinMode(sensor_pin, INPUT);
+ my_servo.attach(my_servo_pin);
+}
+void loop(){
+    val = digitalRead(4);
+    if(val==0)
+    {
+      my_servo.write(90);
+    }
+    if(val==1)
+    {
+      my_servo.write(0);
+    }
+}
